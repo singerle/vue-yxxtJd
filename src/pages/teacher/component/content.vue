@@ -1,10 +1,10 @@
 <template>
-  <!-- <div class="container"> -->
-    <!-- <h2 class="title">{{content.title}}</h2> -->
-    <!-- <ul class="item-wrapper" v-show="content.desc.length>0">
+  <div class="container">
+    <h2 class="title">{{content.title}}</h2>
+    <ul class="item-wrapper" v-show="content.desc.length>0">
       <li class="item" v-for="(item, index) in content.desc">{{index+1}}、 {{item}}</li>
-    </ul> -->
-  <!-- </div> -->
+    </ul>
+  </div>
 </template>
 
 <script>

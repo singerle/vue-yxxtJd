@@ -29,13 +29,16 @@
     	</div>
     	<div class="prement">
     		<h3>新同学：你好！</h3>
-    		<p>
+			<p>
+				<span style="display:inline-block;text-indent: 2em">欢迎加入重庆机电职业技术学院！</span>
+	    	</p>
+    		<!-- <p>
 				<span style="display:inline-block;text-indent: 2em">欢迎加入重庆邮电大学移通学院，当你看到本页面缴费数据后即可进行缴费，学校为你提供以下2种缴费方式：</span>
 				</br>
 				1. 我院新生实行网上缴费，学生在8月1日后登陆学院官网缴纳费用。</br>
 				登陆“重庆邮电大学移通学院”官网---公共服务---学费缴纳</br>
 				2. 办理生源地贷款学生需到报到现场核实贷款信息后缴纳剩余费用（不要在网上缴纳），自主网上缴费不成功的同学也可进行现场缴费（费时费力，需排队，不推荐）
-	    	</p>
+	    	</p> -->
     	</div>
 <!-- 		<div class="qwjf">
 			<router-link to="/jfdtEwm">

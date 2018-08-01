@@ -116,10 +116,7 @@ export default {
         if (res.state === SUCCES_OK) {
           this.prop('办理成功')
           this._fetchInsurance()
-          setTimeout(() => {
-            this.$router.go(-1)
-          },4000)
-        }else{
+        } else {
           this.prop(res.message)
         }
       }).catch(e => {
@@ -140,9 +137,8 @@ export default {
         res = res.data
         if (res.state === SUCCES_OK) {
           this._fetchInsurance()
-        }else{
-          this.prop(res.message)
         }
+        this.prop(res.message)
       }).catch(_ => {
         this.prop('连接数据库失败')
       })

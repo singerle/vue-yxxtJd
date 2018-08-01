@@ -7,7 +7,7 @@
       <!-- <content-wrapper class="margin" :content="content" v-if="!noData" v-show="isCanel"></content-wrapper> -->
       <content-wrapper class="margin" :content="content" v-if="!noData" v-show="false"></content-wrapper>
       <btn-wrapper class="btn-wrapper" @dispose="dispose" :text="text" :btnstate="btnstate" v-if="!noData" v-show="btnstate===0||btnstate===1||btnstate===3"></btn-wrapper>
-      <mt-field  class="margin" placeholder="请输入撤销原因" type="textarea" rows="8" v-model="introduction" v-if="!noData" v-show="!isCanel" :attr="{maxlength: 80}"></mt-field>
+      <mt-field  class="margin" placeholder="请输入撤销原因" type="textarea" rows="8" v-model="introduction" v-if="!noData" v-show="!isCanel" @input="oninput"></mt-field>
       <marker-icon  v-show="item.state === 1"></marker-icon>
       <no-data v-if="noData"></no-data>
     </div>
@@ -49,6 +49,19 @@ export default {
     }
   },
   methods: {
+    oninput(val){
+      if(val.replace(/[^\x00-\xff]/g, "xx").length>80){
+        console.log(val.length)
+        this.$nextTick(() => {
+        this.introduction = val.substring(0,val.length-1)
+        this.oninput(this.introduction)
+        })
+        // this.username = val.substring(0,val.length-1)
+        // num()
+      }else{
+        return false
+      }
+    },
     back() {
       this.$router.push({path: '/'})
     },

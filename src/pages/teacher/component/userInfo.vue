@@ -1,7 +1,7 @@
 <template>
   <div class="user-info-wrapper">
     <div class="avater">
-      <img width="50" height="50" :src="userInfo.avater"/>
+      <img :onerror="logo" width="50" height="50" :src="userInfo.avater"/>
     </div>
     <div class="desc">
       <div class="item">
@@ -22,6 +22,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      logo: 'this.src="' + require('./pic.png') + '"'
+    }
+  },
   props: {
     userInfo: {
       type: Object,

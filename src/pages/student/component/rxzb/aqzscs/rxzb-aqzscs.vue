@@ -2,10 +2,10 @@
 <!-- 通过display显示隐藏实现默认，对，错显示图标 -->
 <template>
   <div v-if="info[num] && info[num].title" class="wrap" :style="errorShow?'background:#fff':'background:#f7f7f7'" >
-  	<Popup v-if="popupShow" @event="closePopup">
+  	<!-- <Popup v-if="popupShow" @event="closePopup">
   		<img src="static/student-index-pictures/aqzscs-pic.png">
   		<p>欢迎同学们进入安全教育知识问测试节。为了提高同学们的安全防范意识和自我保护能力，增强安全常识与技能，我们特设置了此安全知识测试环节，同学们加油认真答题哦！</p>
-  	</Popup>
+  	</Popup> -->
   	<div class="contents" v-if="!completeShow">
   		<h3 class="title">{{num+1+'.'+info[num].title}}</h3>
   		<ul>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Popup from 'student/component/common/popup-aqzscs.vue'
+// import Popup from 'student/component/common/popup-aqzscs.vue'
 import {completeProcess} from 'student/api/completeSendData.js'
 import {getAqzscsData,sendAqzscsData} from 'student/api/aqzscs.js'
 // setHjStu({pauId: this.$store.getters.getHjid})
@@ -84,7 +84,9 @@ export default {
   		//判定是否做过
   		jg:'',
   		//第一题页面添加一个遮罩层，点击确定后遮罩消失可以开始答题
-  		popupShow:false
+  		popupShow:false,
+  		// //每个题目前面的序号A,B,C,D
+  		// order:['A','B','C','D','E','F','G','H','I','J','K']
   	}
   },
   methods:{
@@ -206,9 +208,10 @@ export default {
 				padding:.13rem 0 .1rem
 			ul
 				li
-					height:.48rem
+					// height:.48rem
 					font-size:.17rem
 					display:flex
+					margin:.1rem
 					.option-ico
 						position:relative
 						margin:0 .15rem 0 .2rem	
