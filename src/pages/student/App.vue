@@ -19,7 +19,6 @@ export default {
   },
   watch: {
   	'$route'(to, from){
-      
 	  	if (!this.map[to.path]) {
 	        this.map[to.path] = +new Date() + 1
 	    }

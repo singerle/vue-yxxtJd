@@ -43,8 +43,8 @@
                 <quill-editor class="quill-editor" ref="myQuillEditor"
                   v-model="ruleForm.content" :options="editorOption" @change="onEditorChange($event)" @focus="onEditorFocus($event)"></quill-editor>
                 <!-- <quill-editor ref="myQuillEditor" v-model="ruleForm.content" :options="editorOption"></quill-editor> -->
-               <!--  <div class="limit">当前已输入 <span>{{nowLengthNum}}</span> 个字符，您还可以输入 <span>{{SurplusLengthNum}}</span> 个字符。</div> -->
-               <div class="limit" style="border:none"></div>
+                <!--  <div class="limit">当前已输入 <span>{{nowLengthNum}}</span> 个字符，您还可以输入 <span>{{SurplusLengthNum}}</span> 个字符。</div> -->
+               <div class="limit" style="border:0"></div>
                 <!-- 文件上传input 将它隐藏-->
                 <el-upload class="upload-demo" :action="qnLocation" :before-upload='beforeUpload' :data="uploadData" :on-success='upScuccess'
                   ref="upload" style="display:none">
@@ -72,6 +72,7 @@ import 'quill/dist/quill.bubble.css';
 import { quillEditor, Quill } from 'vue-quill-editor';
 import { fetchAddNews, modifylist, modifynews, updataUrl } from 'oa/api/statis/news'
 import { mapGetters } from 'vuex'
+import { reg } from 'oa/utils/dom'
 const SUCCESS_OK = '200'
   export default {
     components: {
@@ -103,6 +104,7 @@ const SUCCESS_OK = '200'
         rules: {
           title: [
             { required: true, message: '新闻标题不能为空', trigger: 'blur' },
+            { pattern: reg, message: '仅限中英文数字输入' },
             { max: 40, message: '限40个字符内', trigger: 'blur' }
           ],
           cropImg: [
@@ -152,7 +154,7 @@ const SUCCESS_OK = '200'
         console.info(editor)
         editor.enable(true)   // 实现达到上限字符可删除
         if (this.SurplusLengthNum === 2000){
-          editor.enable(false)   // 实现达到上限字符可删除
+          // editor.enable(false)   // 实现达到上限字符可删除
         }
       },
       // 图片上传之前调取的函数
@@ -208,11 +210,11 @@ const SUCCESS_OK = '200'
         } else {
           this.SurplusLengthNum = 0
         }
-        // if (textLength >= _totalNum) {
-        //   this.MessageError('最多输入2000个字符')
-        //   quill.enable(false)
-        //   return
-        // }
+        if (textLength >= _totalNum) {
+          // this.MessageError('最多输入2000个字符')
+          // quill.enable(false)
+          return
+        }
       },
       // 新增 提交
       submitForm(formName) {

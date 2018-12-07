@@ -26,8 +26,8 @@ export default {
   data () {
     return {
       login: {
-        name: 'admin',
-        password: '123456'
+        name: '',
+        password: ''
       },
       loading: false,
       rules: {
@@ -51,7 +51,7 @@ export default {
             } else {
               this.MessageError('用户名或者密码错误')
             }
-          }).catch(() => {
+          }).catch((e) => {
             this.loading = false
           })
         }

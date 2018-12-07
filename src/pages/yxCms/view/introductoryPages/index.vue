@@ -26,6 +26,7 @@
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
+
         </el-form-item>
         <el-form-item size="large">
           <el-button type="primary" @click="dialogTableVisible = true">预览</el-button>

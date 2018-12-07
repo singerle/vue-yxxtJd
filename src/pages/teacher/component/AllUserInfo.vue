@@ -2,7 +2,7 @@
   <div class="user-info-wrapper">
     <div class="user">
       <ul>
-        <li class="listy"><span class="user-name">学号</span><span class="user-data">{{AllUserInfo.studentcode}}</span></li>
+        <li class="listy"><span class="user-name">录取号</span><span class="user-data">{{AllUserInfo.enrollcode}}</span></li>
         <li class="listy"><span class="user-name">考生号</span><span class="user-data">{{AllUserInfo.examineecode}}</span></li>
         <li class="listy"><span class="user-name">身份证号</span><span class="user-data">{{AllUserInfo.idcode}}</span></li>
         <li class="listy"><span class="user-name">出生年月</span><span class="user-data">{{AllUserInfo.birthday}}</span></li>
@@ -10,7 +10,6 @@
         <li :class="{listy:AllUserInfo.house}"><span class="user-name" v-show="AllUserInfo.house">寝室大楼</span><span class="user-data">{{AllUserInfo.house}}</span></li>
         <li :class="{listy:AllUserInfo.room}"><span class="user-name" v-show="AllUserInfo.room">房号</span><span class="user-data">{{AllUserInfo.room}}</span></li>
         <li :class="{listy:AllUserInfo.bed}" class="borderNO"><span class="user-name" v-show="AllUserInfo.bed">铺位</span><span class="user-data">{{AllUserInfo.bed}}</span></li>
-       <!--  <li>{{AllUserInfo}}</li> -->
       </ul>
     </div>
   </div>
@@ -34,11 +33,7 @@ export default {
         }
       }
     }
-  },
-  // created(){
-  //   alert('学号',this.AllUserInfo.studentcode)
-  //   alert('考生号',this.AllUserInfo.examineecode)
-  // }
+  }
 }
 </script>
 

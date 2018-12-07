@@ -25,7 +25,7 @@ export default {
       title: '搜索',
       type: 0,
       types: ['学号', '考生号', '准考号'],
-      input: '1602061',
+      input: '',
       sheetVisible: false,
       actions: [],
       text: '搜索',

@@ -3,43 +3,43 @@
     <!-- <my-header :title="title"></my-header> -->
     <div class="home-content" v-if="stu">
       <ul class="items">
-        <li class="item" v-if="options.register">
-          <div class="item-wraper border-left" @click="toPage('register')">
+        <li class="item" v-if="options.register.flag">
+          <div class="item-wraper border-left" @click="toPage('register', options.register.eaaRevoke)">
             <div class="icon register"></div>
             <div class="text">现场报到</div>
           </div>
         </li>
-        <li class="item" v-if="options.channel">
-          <div class="item-wraper border-right"  @click="toPage('channel')">
+        <li class="item" v-if="options.channel.flag">
+          <div class="item-wraper border-right"  @click="toPage('channel', options.channel.eaaRevoke)">
             <div class="icon channel"></div>
             <div class="text">绿色通道</div>
           </div>
         </li>
-        <li class="item" v-if="options.sushe">
-          <div class="item-wraper border-left"  @click="toPage('sushe')">
+        <li class="item" v-if="options.sushe.flag">
+          <div class="item-wraper border-left"  @click="toPage('sushe', options.sushe.eaaRevoke)">
             <div class="icon sushe"></div>
             <div class="text">宿舍分配</div>
           </div>
         </li>
-        <li class="item" v-if="options.insurance">
-          <div class="item-wraper border-right" @click="toPage('insurance')">
+        <li class="item" v-if="options.insurance.flag">
+          <div class="item-wraper border-right" @click="toPage('insurance', options.insurance.eaaRevoke)">
             <div class="icon insurance"></div>
             <div class="text">保险购买</div>
           </div>
         </li>
-        <li class="item" v-if="options.caiwu">
-          <div class="item-wraper border-left" @click="toPage('caiwu')">
+        <li class="item" v-if="options.caiwu.flag">
+          <div class="item-wraper border-left" @click="toPage('caiwu', options.caiwu.eaaRevoke)">
             <div class="icon caiwu"></div>
             <div class="text">财务缴费</div>
           </div>
         </li>
-        <li class="item" v-if="options.manage">
-          <div class="item-wraper border-right"  @click="toPage('manage')">
+        <li class="item" v-if="options.manage.flag">
+          <div class="item-wraper border-right"  @click="toPage('manage', options.manage.eaaRevoke)">
             <div class="icon manage"></div>
             <div class="text">授权管理</div>
           </div>
         </li>
-        <li class="item" v-if="options.news">
+        <li class="item" v-if="options.news.flag">
           <div class="item-wraper border-right" @click="toNew">
             <div class="icon news"></div>
             <div class="text">走进理工</div>
@@ -68,13 +68,13 @@ export default {
     return {
       title: '迎新管理',
       options: {
-        caiwu: false,
-        register: false,
-        channel: false,
-        sushe: false,
-        manage: false,
-        insurance: false,
-        news: false
+        // caiwu: false,
+        // register: false,
+        // channel: false,
+        // sushe: false,
+        // manage: false,
+        // insurance: false,
+        // news: false
       }
     }
   },
@@ -93,8 +93,11 @@ export default {
     }
   },
   methods: {
-    toPage(path) {
+    // toPage(path) {
       // 调用二维码
+      toPage(path, eaaRevoke) {
+      // 全局设置是否是有撤销功能
+      this.setState(eaaRevoke)
       jsAndroid.barcode.scanBtn().then(res => {
         // alert(res)
         console.log(res)
@@ -112,6 +115,9 @@ export default {
           this.$router.push({path: `/search`})
         }
       })
+      this.setUserid('')
+      this.setSearch(path)
+      this.$router.push({path: `/search`})
       // this.setUserid('')
       // this.setSearch(path)
       // this.$router.push({path: `/search`})
@@ -138,7 +144,8 @@ export default {
       'setUserid': 'SET_USERID',
       'setSearch': 'SET_SEARCH',
       'setType': 'SET_TYPE',
-      'setCode': 'SET_CODE'
+      'setCode': 'SET_CODE',
+      'setState': 'SET_STATE'
     })
   },
   created () {

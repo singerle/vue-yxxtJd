@@ -56,7 +56,7 @@ export default {
   			return false
   		}
       console.log(1)
-  		this.set_xyData({func: 'getXybdqk',p:{xybh:this.xybh,sylx: this.get_sylx}})
+  		this.set_xyData({func: 'getXybdqk',p:{xybh:this.xybh,sylx: encodeURI(this.get_sylx)}})
   	}
   }
 }
